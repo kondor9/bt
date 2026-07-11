@@ -1499,11 +1499,13 @@ class TargetVol(Algo):
         vol = np.sqrt(np.matmul(weights.values.T, np.matmul(covar.values, weights.values)) * self.annualization_factor)
 
         if isinstance(self.target_volatility, (float, int)):
-            self.target_volatility = {k: self.target_volatility for k in target.temp["weights"].keys()}
+            target_volatility = {k: self.target_volatility for k in target.temp["weights"].keys()}
+        else
+            target_volatility = self.target_volatility
 
         for k in target.temp["weights"].keys():
-            if k in self.target_volatility.keys():
-                target.temp["weights"][k] = target.temp["weights"][k] * self.target_volatility[k] / vol
+            if k in target_volatility.keys():
+                target.temp["weights"][k] = target.temp["weights"][k] * target_volatility[k] / vol
 
         return True
 
