@@ -1500,7 +1500,7 @@ class TargetVol(Algo):
 
         if isinstance(self.target_volatility, (float, int)):
             target_volatility = {k: self.target_volatility for k in target.temp["weights"].keys()}
-        else
+        else:
             target_volatility = self.target_volatility
 
         for k in target.temp["weights"].keys():
